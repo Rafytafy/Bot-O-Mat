@@ -28,7 +28,7 @@ app.use('/api/tasks', tasks);
 app.use('/api/leaderboard', leaderboard);
 
 //Server static assets when in production
-if(proccess.env.NODE_ENV === 'production'){
+if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));
 
     app.get('*', (req, res) => {
