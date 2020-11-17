@@ -9,7 +9,6 @@ import {
     FormGroup,
     Label,
     Input,
-    InputGroup,
 } from 'reactstrap'
 
 class TaskModal extends Component {

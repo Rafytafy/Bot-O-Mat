@@ -28,14 +28,14 @@ import  '../App.css'
             
             if(this.props.robot.type === this.props.assignedTasks.[i].type){
                 //Wait for promise
-                await this.delay(i)
+                await this.delayCompletedTask(i)
                 this.setState({completedTask: [...this.state.completedTask, this.props.assignedTasks.[i].description]})
             }
             else{
-                this.setState({failedTask: [...this.state.failedTask, this.props.assignedTasks.[i].description]})
+                await this.delayFailedTask(i)
             }
             
-            
+            console.log("Hello")
         }
         this.setState({currentTask: "Finished tasks!"})
         setTimeout(() => {
@@ -52,7 +52,7 @@ import  '../App.css'
         
     }
 
-    delay = (i) => {
+    delayCompletedTask = (i) => {
         return new Promise((resolve) => {
             setTimeout(() => {
                 this.setState({tasksCompleted: this.state.tasksCompleted + 1})
@@ -61,6 +61,18 @@ import  '../App.css'
                 })
                 resolve('success')
             }, this.props.assignedTasks.[i].eta)
+            
+        })
+        
+
+    }
+
+    delayFailedTask = (i) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                this.setState({failedTask: [...this.state.failedTask, this.props.assignedTasks.[i].description]})
+                resolve('success')
+            }, 500)
             
         })
         

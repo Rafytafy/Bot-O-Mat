@@ -1,4 +1,4 @@
-import React, { Component, Checkbox } from 'react'
+import React, { Component } from 'react'
 import { Table, Container } from 'reactstrap'
 import RobotModal from './RobotModal'
 import TaskModal from './TaskModal'
