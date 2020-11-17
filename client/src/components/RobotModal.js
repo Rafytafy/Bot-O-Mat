@@ -16,7 +16,7 @@ class RobotModal extends Component {
     state = {
         modal: false,
         name: '',
-        type: ''
+        type: 'Unipedal'
     }
 
     toggle = () => {
