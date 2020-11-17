@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom'
-import { Table, Container } from 'reactstrap'
 import Header from './components/layouts/header'
-import Robots from './components/Robots'
+import Setup from './components/Setup'
 import Execute from './components/Execute'
 import axios from 'axios'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Leaderboard from './components/Leaderboard';
 
 class App extends Component {
   state = {
@@ -29,10 +29,6 @@ class App extends Component {
         this.setState({tasks: res.data})
       })
 
-    axios.get('api/leaderboard')
-      .then((res) => {
-        this.setState({leaderboard: res.data})
-      })
   }
 
   addRobot = item => {
@@ -83,7 +79,7 @@ class App extends Component {
           <Header />
           <Route exact path="/" render={props => (
             <React.Fragment>
-              <Robots robots={this.state.robots} tasks={this.state.tasks} addRobot={this.addRobot} addTask={this.addTask} selectRobots={this.selectRobots} />
+              <Setup robots={this.state.robots} tasks={this.state.tasks} addRobot={this.addRobot} addTask={this.addTask} selectRobots={this.selectRobots} />
             </React.Fragment>
           )}
           />
@@ -94,25 +90,7 @@ class App extends Component {
             )} 
           />
           <Route path="/leaderboard">
-            <Container>
-              <h2>Leaderboard</h2>
-              <Table>
-              <thead>
-                  <th>Robot Name</th>
-                  <th>Type</th>
-                  <th>Score</th>
-              </thead>
-              {this.state.leaderboard.map((robot) => (
-                  <tr key={robot._id}>
-                      <th>{robot.name}</th>
-                      <th>{robot.type}</th>
-                      <th>{robot.score}</th>
-                  </tr>
-              ))}
-              </Table>
-            </Container>
-            
-
+            <Leaderboard />
           </Route>
           
         </div>

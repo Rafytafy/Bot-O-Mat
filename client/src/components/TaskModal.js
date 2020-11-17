@@ -18,7 +18,7 @@ class TaskModal extends Component {
         modal: false,
         description: '',
         eta: 0,
-        type: ''
+        type: 'Unipedal'
     }
 
     toggle = () => {
@@ -73,7 +73,7 @@ class TaskModal extends Component {
                                     onChange={this.onChange}
                                 />
                                 
-                                <Label for="eta">ETA</Label>
+                                <Label for="eta">ETA (milliseconds)</Label>
                                 <Input name="eta" type="number" id="eta"  onChange={this.onChange} />
 
                                 <Label for="type">Complete By</Label>

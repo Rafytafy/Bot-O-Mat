@@ -47,6 +47,10 @@
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+.robot-task-group{
+  margin-top: 2em;
+}
+
 @media only screen and (min-width: 800px) {
   .robot-style {
     width: 50%;

@@ -21,6 +21,7 @@ mongoose
     .then(() => console.log("mongoDB Connected..."))
     .catch(err => console.log(err));
 
+mongoose.set('useFindAndModify', false);
 
 //Routes
 app.use('/api/robots', robots);

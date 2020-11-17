@@ -3,7 +3,7 @@ import { Table, Container } from 'reactstrap'
 import RobotModal from './RobotModal'
 import TaskModal from './TaskModal'
 
-class Robots extends Component {
+class Setup extends Component {
 
     render() {
         
@@ -50,4 +50,4 @@ class Robots extends Component {
     }
 }
 
-export default Robots;
+export default Setup;

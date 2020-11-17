@@ -33,8 +33,6 @@ router.post('/', (req, res) => {
 
 router.put('/', (req, res) => {
 
-    let addScore = parseInt(req.body.score)
-    console.log(req.body)
     Robot.findOne({ name: req.body.name }, (err, foundRobot) => {
         Robot.findOneAndUpdate({name: req.body.name}, {score: foundRobot.score + parseInt(JSON.parse(req.body.score))}, (err, updatedRobot) => {
             if(err){

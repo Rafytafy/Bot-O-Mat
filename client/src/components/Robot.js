@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button} from 'reactstrap'
+import {Button, ListGroup, ListGroupItem} from 'reactstrap'
 import axios from 'axios'
 
 import  '../App.css'
@@ -7,18 +7,32 @@ import  '../App.css'
     state ={
         currentTask: "...",
         tasksCompleted: 0,
-        deleteTask: ""
+        deleteTask: "",
+        completedTask: [],
+        failedTask: [],
+        toggleButton: false
     }
     async beginTasks() {
-
+       
+        this.setState({toggleButton: !this.state.toggleButton})
+        //Loop through tasks for robot to do
         for(var i = 0; i < this.props.assignedTasks.length; i++){
+            
+            //If assignedTask is less than 5
             if(this.props.assignedTasks.[i] === undefined){
                 break;
             }
+
             this.setState({currentTask: this.props.assignedTasks.[i].description})
     
+            
             if(this.props.robot.type === this.props.assignedTasks.[i].type){
+                //Wait for promise
                 await this.delay(i)
+                this.setState({completedTask: [...this.state.completedTask, this.props.assignedTasks.[i].description]})
+            }
+            else{
+                this.setState({failedTask: [...this.state.failedTask, this.props.assignedTasks.[i].description]})
             }
             
             
@@ -55,8 +69,8 @@ import  '../App.css'
     
     render() {
         return (
-            
-            <div className="robot-style">
+            <div>
+                <div className="robot-style">
                 <div>
                 <h4>{this.props.robot.name}</h4>
                 <p>Currrent Task: {this.state.currentTask}</p>
@@ -64,7 +78,21 @@ import  '../App.css'
                 
                 
                 <p>Tasks Completed: {this.state.tasksCompleted}</p>
-                <Button onClick={this.beginTasks.bind(this)}>Turn On</Button>
+                <Button disabled={this.state.toggleButton} onClick={this.beginTasks.bind(this)}>Turn On</Button>
+            </div>
+            <div className="robot-task-group">
+                <h2>Attempted Tasks: </h2>
+                <ListGroup>
+                    {this.state.completedTask.map((task) => (
+                        <ListGroupItem color="success">{task}</ListGroupItem>
+                    ))}
+                </ListGroup>
+                <ListGroup>
+                    {this.state.failedTask.map((task) => (
+                        <ListGroupItem color="danger">{task}</ListGroupItem>
+                    ))}
+                </ListGroup>
+            </div>
             </div>
         )
     }
