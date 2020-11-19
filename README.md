@@ -1,3 +1,17 @@
+# How to Access Project 
+Project is deployed to the web
+
+Link: https://pacific-river-13697.herokuapp.com/
+
+## Home Page
+On this page is where you create and pick the robot to deploy as well as create tasks.
+
+## Execute Page
+On this page is where the robot that you picked from the home page goes to work. First you have to deploy the robot then you turn it on. Next, wait for the robot to complete the 5 task that was assigned to it. Page will show if the task was completed (green) or failed (red).
+
+## Leaderboard Page
+Shows the stats of all the robots and ranks them by score. Score is the number of tasks completed by the robot. Robots will not get credit if they fail a task.
+
 # BOT-O-MAT
 Use any language to complete this challenge. The implementation is up to you: it can be a command-line application or have a graphical interface.
 
